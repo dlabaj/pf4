@@ -9,7 +9,10 @@
   ],
   "presets": [
     ["@babel/preset-env", {
+      "useBuiltIns": "entry",
+      "corejs": 2,
       "targets": {
+        "chrome": "58",
         "ie": "11"
       }
     }],
