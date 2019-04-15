@@ -4,4 +4,4 @@
 npm install
 npm run build
 ```
-Open dist/index.html in IE11
+Open `dist/index.html` in IE11
