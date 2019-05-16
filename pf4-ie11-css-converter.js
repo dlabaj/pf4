@@ -14,12 +14,6 @@ const filesThatNeedPathAdjustments = [
   path.resolve(__dirname, './node_modules/@patternfly/patternfly/components/AboutModalBox/about-modal-box.css')
 ];
 
-if (fs.existsSync(newAssetDir)){
-  rimraf.sync(newAssetDir);
-}
-
-fs.mkdirSync(newAssetDir);
-
 function fixAssetPaths(files) {
   // fix path discrepancy between .pf-c-background-image and font definitions
   files.map(filePath => {
@@ -38,28 +32,33 @@ function fixAssetPaths(files) {
   });
 }
 
-fixAssetPaths(filesThatNeedPathAdjustments);
 
-const stylesheetsToExclude = ['Table', 'Login'];
+rimraf(newAssetDir, () => {
+  fs.mkdir(newAssetDir, () => {
+    fixAssetPaths(filesThatNeedPathAdjustments);
 
-getStylesheetPaths(pfStylesheetsGlob, stylesheetsToExclude, [myAppStylesheetPath])
-  .then(files => concat(files))
-  .then(concatCss => transform(concatCss, patternflyBasePath))
-  .then(ie11ReadyStylesheet => {
-    fs.writeFileSync(
-      path.resolve(__dirname, toPath),
-      ie11ReadyStylesheet
-    );
+    const stylesheetsToExclude = ['Table', 'Login'];
 
-    // copy assets into local directory where our stylesheets can find them
-    const sourceAssetsDir = path.resolve(__dirname, './node_modules/@patternfly/patternfly/assets');
+    getStylesheetPaths(pfStylesheetsGlob, stylesheetsToExclude, [myAppStylesheetPath])
+      .then(files => concat(files))
+      .then(concatCss => transform(concatCss, patternflyBasePath))
+      .then(ie11ReadyStylesheet => {
+        fs.writeFileSync(
+          path.resolve(__dirname, toPath),
+          ie11ReadyStylesheet
+        );
 
-    fse.copy(sourceAssetsDir, newAssetDir, function (error) {
-      if (error) {
+        // copy assets into local directory where our stylesheets can find them
+        const sourceAssetsDir = path.resolve(__dirname, './node_modules/@patternfly/patternfly/assets');
+
+        fse.copy(sourceAssetsDir, newAssetDir, function (error) {
+          if (error) {
+            throw new Error(error);
+          }
+        });
+      })
+      .catch(error => {
         throw new Error(error);
-      }
+      });
     });
-  })
-  .catch(error => {
-    throw new Error(error);
   });
