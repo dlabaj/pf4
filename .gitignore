@@ -1,2 +1,3 @@
 node_modules
 src/assets/ie11
+.DS_Store

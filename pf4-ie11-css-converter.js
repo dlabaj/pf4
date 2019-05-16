@@ -2,6 +2,7 @@ const fs = require('fs');
 const fse = require('fs-extra');
 const path = require('path');
 const concat = require('concat');
+const rimraf = require('rimraf');
 const { getStylesheetPaths, transform } = require('@patternfly/patternfly/scripts/ie-conversion-utils');
 const pfStylesheetsGlob = path.resolve(__dirname, './node_modules/@patternfly/patternfly/{components,layouts,utilities}/**/*.css');
 const patternflyBasePath = path.resolve(__dirname, './node_modules/@patternfly/patternfly/patternfly-base.css');
@@ -13,9 +14,11 @@ const filesThatNeedPathAdjustments = [
   path.resolve(__dirname, './node_modules/@patternfly/patternfly/components/AboutModalBox/about-modal-box.css')
 ];
 
-if (!fs.existsSync(newAssetDir)){
-  fs.mkdirSync(newAssetDir);
+if (fs.existsSync(newAssetDir)){
+  rimraf.sync(newAssetDir);
 }
+
+fs.mkdirSync(newAssetDir);
 
 function fixAssetPaths(files) {
   // fix path discrepancy between .pf-c-background-image and font definitions
