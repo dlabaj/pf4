@@ -37,7 +37,7 @@ rimraf(newAssetDir, () => {
   fs.mkdir(newAssetDir, () => {
     fixAssetPaths(filesThatNeedPathAdjustments);
 
-    const stylesheetsToExclude = ['Table', 'Login'];
+    const stylesheetsToExclude = ['Table'];
 
     getStylesheetPaths(pfStylesheetsGlob, stylesheetsToExclude, [myAppStylesheetPath])
       .then(files => concat(files))
