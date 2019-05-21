@@ -8,13 +8,13 @@ import bgImgXSmall2x from "../../assets/images/pfbg_576@2x.jpg";
 import bgImgSvg from "../../assets/images/background-filter.svg";
 
 import {
+  BackgroundImageSrc,
   LoginFooterItem,
   LoginForm,
+  ListItem,
   LoginMainFooterBandItem,
   LoginMainFooterLinksItem,
-  LoginPage,
-  BackgroundImageSrc,
-  ListItem
+  LoginPage
 } from "@patternfly/react-core";
 import { ExclamationCircleIcon } from "@patternfly/react-icons";
 
