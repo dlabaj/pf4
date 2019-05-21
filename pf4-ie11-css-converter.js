@@ -7,7 +7,7 @@ const { getStylesheetPaths, transform } = require('@patternfly/patternfly/script
 const pfStylesheetsGlob = path.resolve(__dirname, './node_modules/@patternfly/patternfly/{components,layouts,utilities}/**/*.css');
 const patternflyBasePath = path.resolve(__dirname, './node_modules/@patternfly/patternfly/patternfly-base.css');
 const myAppStylesheetPath = path.resolve(__dirname, './src/assets/app.css');
-const newAssetDir = path.resolve(__dirname, './src/assets/ie11');
+const newAssetDir = path.resolve(__dirname, './dist');
 const toPath = path.resolve(newAssetDir, 'app.css');
 const filesThatNeedPathAdjustments = [
   path.resolve(__dirname, './node_modules/@patternfly/patternfly/components/BackgroundImage/background-image.css'),

@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ["null-loader"]
       },
       {
         test: /\.(png|jpg|gif)$/,
