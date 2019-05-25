@@ -4,14 +4,14 @@ const path = require('path');
 const concat = require('concat');
 const rimraf = require('rimraf');
 const { getStylesheetPaths, transform } = require('@patternfly/patternfly/scripts/ie-conversion-utils');
-const pfStylesheetsGlob = path.resolve(__dirname, './node_modules/@patternfly/patternfly/{components,layouts,utilities}/**/*.css');
-const patternflyBasePath = path.resolve(__dirname, './node_modules/@patternfly/patternfly/patternfly-base.css');
-const myAppStylesheetPath = path.resolve(__dirname, './src/assets/app.css');
-const newAssetDir = path.resolve(__dirname, './dist');
-const toPath = path.resolve(newAssetDir, 'app.css');
+const pfStylesheetsGlob = path.resolve(__dirname, '../node_modules/@patternfly/patternfly/{components,layouts,utilities}/**/*.css');
+const patternflyBasePath = path.resolve(__dirname, '../node_modules/@patternfly/patternfly/patternfly-base.css');
+const myAppStylesheetPath = path.resolve(__dirname, '../src/assets/app.css');
+const newAssetDir = path.resolve(__dirname, '../dist');
+const toPath = path.resolve(newAssetDir, 'app-ie11.css');
 const filesThatNeedPathAdjustments = [
-  path.resolve(__dirname, './node_modules/@patternfly/patternfly/components/BackgroundImage/background-image.css'),
-  path.resolve(__dirname, './node_modules/@patternfly/patternfly/components/AboutModalBox/about-modal-box.css')
+  path.resolve(__dirname, '../node_modules/@patternfly/patternfly/components/BackgroundImage/background-image.css'),
+  path.resolve(__dirname, '../node_modules/@patternfly/patternfly/components/AboutModalBox/about-modal-box.css')
 ];
 
 function fixAssetPaths(files) {
@@ -20,8 +20,8 @@ function fixAssetPaths(files) {
     const startingCss = fs.readFileSync(filePath, 'utf8').match(/[^\r\n]+/g);
     const cssWithFixedPaths = startingCss.map(
       line => {
-        const re = new RegExp('../../assets', 'g');
-        return (line.includes('../../assets')) ? line.replace(re, './assets') : line;
+        const re = new RegExp('../../../assets', 'g');
+        return (line.includes('../../../assets')) ? line.replace(re, './assets') : line;
       }).join('\n');
 
     // update these files in place
@@ -49,7 +49,7 @@ rimraf(newAssetDir, () => {
         );
 
         // copy assets into local directory where our stylesheets can find them
-        const sourceAssetsDir = path.resolve(__dirname, './node_modules/@patternfly/patternfly/assets');
+        const sourceAssetsDir = path.resolve(__dirname, '../node_modules/@patternfly/patternfly/assets');
 
         fse.copy(sourceAssetsDir, newAssetDir, function (error) {
           if (error) {

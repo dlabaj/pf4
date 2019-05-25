@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "start": "webpack --mode development --watch",
-    "build": "npm run build:ie11Css && webpack --mode production",
-    "build:ie11Css": "node pf4-ie11-css-converter.js",
+    "build": "npm run build:ie11Css && npm run copy:pf4Css && webpack --mode production",
+    "build:ie11Css": "node ./scripts/pf4-ie11-css-converter.js",
+    "copy:pf4Css": "node ./scripts/copy-pf4-css.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Red Hat",
+  "license": "Apache",
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",

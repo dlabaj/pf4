@@ -5,7 +5,6 @@ import bgImgSmall from "../../assets/images/pfbg_768.jpg";
 import bgImgSmall2x from "../../assets/images/pfbg_768@2x.jpg";
 import bgImgXSmall from "../../assets/images/pfbg_576.jpg";
 import bgImgXSmall2x from "../../assets/images/pfbg_576@2x.jpg";
-import bgImgSvg from "../../assets/images/background-filter.svg";
 
 import {
   BackgroundImageSrc,
@@ -26,8 +25,7 @@ const images = {
   [BackgroundImageSrc.sm]: bgImgSmall,
   [BackgroundImageSrc.sm2x]: bgImgSmall2x,
   [BackgroundImageSrc.xs]: bgImgXSmall,
-  [BackgroundImageSrc.xs2x]: bgImgXSmall2x,
-  [BackgroundImageSrc.filter]: `${bgImgSvg}#image_overlay`
+  [BackgroundImageSrc.xs2x]: bgImgXSmall2x
 };
 
 class AppLoginPage extends React.Component {
