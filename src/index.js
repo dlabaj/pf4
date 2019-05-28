@@ -2,7 +2,7 @@ import "@babel/polyfill";
 import "core-js/es7/object";
 import React from "react";
 import { render } from "react-dom";
-import { AppLoginPage } from "./components";
+import { AppLoginPage, PageLayoutSimpleNav } from "./components";
 document.addEventListener("DOMContentLoaded", () => {
   const app_stylesheet =
     navigator.userAgent.toLowerCase().indexOf("trident") != -1
@@ -18,5 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   head.appendChild(link);
 
-  render(<AppLoginPage />, document.getElementById("root"));
+  //render(<AppLoginPage />, document.getElementById("root"));
+  render(<PageLayoutSimpleNav />, document.getElementById("root"));
 });
