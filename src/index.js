@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   head.appendChild(link);
 
-  //render(<AppLoginPage />, document.getElementById("root"));
-  render(<PageLayoutSimpleNav />, document.getElementById("root"));
+  
+
+  render(<AppLoginPage />, document.getElementById("root"));
+  //render(<PageLayoutSimpleNav />, document.getElementById("root"));
 });
