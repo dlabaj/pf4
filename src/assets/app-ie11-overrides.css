@@ -90,6 +90,15 @@
 }
 
 .pf-c-button.pf-m-primary {
-  color: black;
-  background-color: #06c!important;
+  color: #fff;
+  background-color: #0066cc!important;
+}
+
+.pf-c-button.pf-m-primary:hover{
+  color: #fff;
+  background-color: #00659C!important;
+}
+
+.pf-m-inline li {
+  margin-top: 0.5rem
 }
